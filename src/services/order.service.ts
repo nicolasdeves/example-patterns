@@ -16,6 +16,7 @@ export class OrderService {
     }
 
     changeStatus(newStatus: string) {
+        //aqui poderia salvar numa tabela history da banco :-)
         this.history.push(new OrderMemento(this.status));
 
         this.status = newStatus;
@@ -24,6 +25,7 @@ export class OrderService {
     }
 
     undo() {
+        //busca o ultimo registroo
         const memento = this.history.pop();
         if (memento) {
             this.status = memento.status;
